@@ -1,4 +1,3 @@
-
 #include<iostream>
 using namespace std;
 class node{
@@ -16,13 +15,12 @@ node *takeInput(){
     int data ;
     cin >> data ;
     while(data != -1){
+         node *newNode = new node(data) ;
         if(head == NULL){
-            node *newNode = new node(data) ;
             head = newNode ;
         }
         else{
             node *temp = head ;
-            node * newNode = new node(data) ;
             while(temp -> next != NULL){
                 temp = temp -> next ;
             }
