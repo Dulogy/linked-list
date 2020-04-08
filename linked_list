@@ -36,8 +36,10 @@ void print(node *head){
         temp = temp -> next ;
     }
     cout << "\n" ;
+
 }
-int length(Node *head)
+
+int length(node *head)
 {
     int len=0;
     while(head!=NULL)
@@ -47,18 +49,7 @@ int length(Node *head)
     }
     return len;
  }
- 
- void printIthNode(Node *head, int i) 
-{
-    int l=0;
-    while(l<i && head!=NULL)
-    {
-        l++;
-         head=head->next;
-    }
-    if(head==NULL){return;}
-    cout<<head->data;
-}
+
 node *insertNode(node *head, int index,int data){
     int i = 0 ;
     node * temp = head ;
@@ -78,14 +69,34 @@ node *insertNode(node *head, int index,int data){
     }
     return head ;
 }
+node *deleteNode(node *head,int index){
+    int i = 0 ;
+    node *temp = head ;
+    if(index == 0){
+        node *a = temp ;
+        head = a -> next ;
+        delete a ;
+        return head ;
+    }
+    while(temp -> next != NULL && i < index-1){
+        temp = temp -> next ;
+        i++ ;
+    }
+    node *a = temp -> next ;
+    node *b = a -> next ;
+    temp -> next = b ;
+    delete a ;
+    if(index > i)
+    return head ;
+}
+
 int main(){
     node *head = takeInput() ;
     print(head) ;
-    cout << length(head);   // to find the length of the linked list
-    int pos;
-    cin >> pos;
-    printIthNode(head, pos);  // to print ith position of linked list
-    
-   head =  insertNode(head,2,100) ;   // insert node at specific position
+   int ll =  length(head);
+   cout << ll << "\n" ; // to find the length of the linked list
+    head = insertNode(head,2,100) ;
+    print(head) ;
+    head = deleteNode(head,4) ;
     print(head) ;
 }
