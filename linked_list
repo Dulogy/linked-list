@@ -35,9 +35,19 @@ void print(node *head){
         cout << temp -> data <<" ";
         temp = temp -> next ;
     }
-
 }
+int length(Node *head)
+{
+    int len=0;
+    while(head!=NULL)
+    {
+        head=head->next;
+        len++;
+    }
+    return len;
+ }
 int main(){
     node *head = takeInput() ;
     print(head) ;
+    cout << length(head);   // to find the length of the linked list
 }
