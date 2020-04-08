@@ -46,8 +46,23 @@ int length(Node *head)
     }
     return len;
  }
+ void printIthNode(Node *head, int i) 
+{
+    int l=0;
+    while(l<i && head!=NULL)
+    {
+        l++;
+         head=head->next;
+    }
+    if(head==NULL){return;}
+    cout<<head->data;
+}
+ 
 int main(){
     node *head = takeInput() ;
     print(head) ;
     cout << length(head);   // to find the length of the linked list
+    int pos;
+    cin >> pos;
+    printIthNode(head, pos);  // to print ith position of linked list
 }
