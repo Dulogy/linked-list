@@ -59,19 +59,25 @@ int length(Node *head)
     if(head==NULL){return;}
     cout<<head->data;
 }
-
-void insertNode(node *head, int index,int data){
+node *insertNode(node *head, int index,int data){
     int i = 0 ;
     node * temp = head ;
     node *newNode = new node(data) ;
-    while(i < index - 1 && temp != NULL){
+    if(index == 0){
+        newNode -> next = head ;
+        head = newNode ;
+        return head ;
+    }
+    while(temp != NULL && i < index - 1){
         i++ ;
         temp = temp -> next ;
     } 
+    if(temp != NULL){
     newNode -> next = temp -> next ;
     temp -> next = newNode ;
+    }
+    return head ;
 }
- 
 int main(){
     node *head = takeInput() ;
     print(head) ;
@@ -80,6 +86,6 @@ int main(){
     cin >> pos;
     printIthNode(head, pos);  // to print ith position of linked list
     
-    insertNode(head,2,100) ;   // insert node at specific position
+   head =  insertNode(head,2,100) ;   // insert node at specific position
     print(head) ;
 }
